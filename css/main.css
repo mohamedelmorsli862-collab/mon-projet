@@ -1,0 +1,225 @@
+/* عام */
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Cairo", sans-serif;
+  background: linear-gradient(to bottom,#02040a,#05091"");
+  color: #fff;
+  direction: rtl;
+  overflow-x: hidden;
+}
+
+/* زر تسجيل الدخول أعلى الصفحة */
+.top-login {
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+.top-login a {
+  font-size: 14px;
+  color: #7dd3ff;
+  text-decoration: none;
+  opacity: .85;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(0,255,255,0.08);
+  transition: 0.3s;
+}
+.top-login a:hover {
+  background: rgba(0,255,255,0.15);
+  color: #00f2fe;
+}
+
+/* شاشة التحية */
+#intro {
+  position: fixed;
+  inset: 0;
+  background: url("https://images.unsplash.com/photo-1519681393784-d120267933ba") center/cover no-repeat;
+  background-size: cover;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s ease;
+  overflow: hidden;
+}
+
+#intro.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(2,4,10,0.85);
+}
+
+#snow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* محتوى التحية */
+.intro-content {
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: #eaf6ff;
+  padding: 20px 40px;
+  z-index: 2;
+  animation: fadeIn 2s ease forwards;
+}
+
+.intro-content h1 {
+  font-size: 30px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  animation: slideDown 1s ease forwards;
+}
+.intro-content h2 {
+  font-size: 22px;
+  opacity: .85;
+  margin-bottom: 10px;
+  animation: slideDown 1.2s ease forwards;
+}
+.intro-content h3 {
+  font-size: 26px;
+  letter-spacing: 2px;
+  color: #00f2fe;
+  margin-bottom: 15px;
+  animation: slideDown 1.4s ease forwards;
+}
+.intro-text {
+  font-size: 15px;
+  line-height: 1.85;
+  max-width: 800px;
+  margin: 25px auto 0;
+  animation: fadeIn 2s ease forwards;
+}
+
+/* زر التخطي */
+#skipBtn {
+  position: relative;
+  margin-top: 30px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 30px;
+  padding: 10px 25px;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  z-index: 3;
+  font-size: 14px;
+  transition: 0.3s;
+}
+#skipBtn:hover {
+  background: rgba(255,255,255,.15);
+  color: #00f2fe;
+}
+#skipBtn img { width: 20px; opacity: .85; }
+
+/* الصفحة الرئيسية */
+.hero {
+  background: url("https://images.unsplash.com/photo-1519681393784-d120267933ba") center/cover;
+  position: relative;
+}
+.overlay {
+  min-height: 80vh;
+  background: rgba(2,4,10,.75);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  text-align: center;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+h1 { font-size: 56px; color: #7dd3ff; margin-bottom: 10px; }
+.epic { max-width: 700px; opacity: .9; font-size: 18px; margin-bottom: 20px; }
+#countdown { margin: 20px; font-size: 24px; color: #00f2fe; }
+.royals span { display: block; margin: 5px; opacity: .85; font-size: 16px; }
+
+.actions { margin-top: 30px; display: flex; gap: 20px; flex-wrap: wrap; }
+.btn {
+  padding: 14px 30px;
+  background: linear-gradient(135deg,#4facfe,#00f2fe);
+  color: #000;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,242,254,0.4);
+}
+
+.img-btn { display: flex; align-items: center; gap: 10px; }
+.img-btn img { width: 40px; border-radius: 8px; }
+
+/* القطاعات والنقابات */
+.sectors { padding: 60px 20px; background: #050912; }
+.sector {
+  margin-bottom: 50px;
+  background: linear-gradient(145deg,#0b1228,#0f183b);
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+}
+.sector.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.sector h3 { color: #7dd3ff; margin-bottom: 15px; }
+.sector ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+  gap: 10px;
+}
+.sector li {
+  background: #121b3a;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.sector li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,242,254,0.4);
+}
+
+/* القصص */
+.story { padding: 60px 20px; background: #050912; font-size: 17px; line-height: 1.8; }
+
+/* أنيميشن fade & slide */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideDown { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity:1; } }
+
+/* Responsive */
+@media(max-width:768px){
+  h1 { font-size: 42px; }
+  h2, h3 { font-size: 20px; }
+  .intro-text { font-size: 14px; }
+  .btn { padding: 12px 25px; font-size: 14px; }
+}

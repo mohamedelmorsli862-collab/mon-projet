@@ -1,0 +1,27 @@
+body {
+  background:#02040a;
+  color:#fff;
+  font-family:Cairo;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+}
+
+input {
+  width:280px;
+  padding:12px;
+  margin:8px;
+  border-radius:10px;
+  border:none;
+}
+
+button {
+  padding:12px 30px;
+  border:none;
+  border-radius:25px;
+  background:linear-gradient(135deg,#4facfe,#00f2fe);
+  font-weight:bold;
+  cursor:pointer;
+}

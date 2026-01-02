@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل نيفيريا | نظام الممالك والنقابات 📜</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #ffcc33;
+            --primary: #00f2fe;
+            --bg: #020617;
+            --card-bg: rgba(30, 41, 59, 0.5);
+            --accent: #ff1100;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg);
+            color: #fff;
+            line-height: 1.8;
+            background-image: radial-gradient(circle at top right, rgba(0, 242, 254, 0.05), transparent),
+                              radial-gradient(circle at bottom left, rgba(255, 204, 51, 0.05), transparent);
+        }
+
+        /* الهيدر */
+        header {
+            padding: 100px 5%;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(2, 6, 23, 0.8), var(--bg)), 
+                        url('https://images.unsplash.com/photo-1519074063912-ad2fe3f5198e?q=80&w=2000') center/cover;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(255, 204, 51, 0.3);
+            margin-bottom: 20px;
+        }
+
+        /* الحاوية الرئيسية */
+        .container { max-width: 1100px; margin: -50px auto 100px; padding: 0 20px; }
+
+        /* الأقسام الإرشادية */
+        .guide-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            color: var(--primary);
+            font-size: 1.8rem;
+            border-bottom: 2px solid rgba(0, 242, 254, 0.2);
+            padding-bottom: 10px;
+        }
+
+        /* شبكة المعلومات */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .info-card {
+            background: rgba(255,255,255,0.03);
+            padding: 25px;
+            border-radius: 20px;
+            border-right: 4px solid var(--gold);
+            transition: 0.3s;
+        }
+
+        .info-card:hover { background: rgba(255,255,255,0.07); transform: translateX(-5px); }
+
+        .info-card h3 { color: var(--gold); margin-bottom: 10px; }
+
+        /* البنك والنقاط */
+        .bank-badge {
+            background: linear-gradient(45deg, #1e293b, #334155);
+            padding: 30px;
+            border-radius: 25px;
+            text-align: center;
+            border: 1px dashed var(--gold);
+        }
+
+        /* الروابط المهمة */
+        .links-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .action-link {
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .whatsapp-link { background: #25d366; color: #fff; }
+        .whatsapp-link:hover { box-shadow: 0 0 20px rgba(37, 211, 102, 0.4); }
+
+        /* المطور الصغير في الأسفل */
+        .dev-badge {
+            position: fixed; bottom: 15px; right: 15px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            padding: 6px 12px; border-radius: 8px;
+            font-size: 10px; color: #fff; z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+
+        @media (max-width: 768px) {
+            .guide-section { padding: 25px; }
+            .section-title { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ماهية الممالك</h1>
+        <p>دليلك الشامل لفهم هيكلية الممالك، النقابات، وأنظمة نيفيريا العظمى</p>
+    </header>
+
+    <div class="container">
+        
+        <section class="guide-section">
+            <h2 class="section-title">🏛️ النظام الملكي والاداري</h2>
+            <p style="margin-bottom: 20px; opacity: 0.9;">
+                يسمى كل قروب <b>(نقابة)</b> ولها قائدها وأعضاءها، وعندما تجتمع عدة نقابات في كيان واحد يسمى <b>(مملكة)</b>. 
+                كل مملكة يديرها أربعة قادة بنظام ملكي يمثلون "الرتب العليا".
+            </p>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>👥 المجتمع الضخم</h3>
+                    <p>يقدر عدد أعضاء المملكة الواحدة بحوالي 1000+ عضو، يتفاعلون يومياً في عالم يمتد لآلاف الأشخاص ومئات النقابات.</p>
+                </div>
+                <div class="info-card">
+                    <h3>⚔️ الفروع والكتائب</h3>
+                    <p>داخل كل مملكة توجد "الفيالق" أو "الفروع"، وهي معاقل المبدعين وأصحاب المواهب حيث تقام التحديات الأسبوعية.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h2 class="section-title">🛡️ ما هي النقابة؟</h2>
+            <div class="info-grid">
+                <div style="grid-column: 1 / -1; margin-bottom: 15px;">
+                    <p>النقابة هي جروب أوتاكو يضم شخصيات قوية تعمل معاً لحماية المملكة، وتتميز بأجوائها الغامضة ومعاركها الشرسة.</p>
+                </div>
+                <div class="info-card">
+                    <h3>👨‍⚖️ الإدارة (الأدميرال)</h3>
+                    <p>يدير النقابة مشرفون مسؤوليتهم حفظ النظام ومنع المخالفات، يرأسهم "الأدميرال" وهو المسؤول الأول والنهائي.</p>
+                </div>
+                <div class="info-card">
+                    <h3>📢 جروب الإعلانات</h3>
+                    <p>المركز الإعلامي لنشر نتائج الفعاليات، ترقية المسؤولين، وإعفاء المقصرين من مهامهم بشكل رسمي.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h2 class="section-title">💰 النظام المالي (البنك)</h2>
+            <div class="bank-badge">
+                <h3 style="color: var(--gold); margin-bottom: 15px;">🏦 بنك نيفيريا الإلكتروني</h3>
+                <p>موقع إلكتروني خاص يتم فيه إحصاء نقاط كل عضو ومشرف. النقاط هي "نقود وهمية" تربحها من فعالياتك.</p>
+                <div style="margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                    <span style="background: rgba(255,204,51,0.1); padding: 5px 15px; border-radius: 50px; font-size: 12px; color: var(--gold);">شراء ألقاب</span>
+                    <span style="background: rgba(255,204,51,0.1); padding: 5px 15px; border-radius: 50px; font-size: 12px; color: var(--gold);">تغيير افتار الجروب</span>
+                    <span style="background: rgba(255,204,51,0.1); padding: 5px 15px; border-radius: 50px; font-size: 12px; color: var(--gold);">تخريب ألقاب الأعضاء (مزاح)</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h2 class="section-title">🔗 روابط ومصادر</h2>
+            <p>انضم الآن لصحيفة المملكة وتابع الأحداث أولاً بأول:</p>
+            <div class="links-area">
+                <a href="https://chat.whatsapp.com/EjCmzWLS3I9FmATxjYx6MT" target="_blank" class="action-link whatsapp-link">
+                    🟢 صحيفة نيفيريا (واتساب)
+                </a>
+                <a href="index.html" class="action-link" style="border: 1px solid var(--primary); color: var(--primary);">
+                    🏠 العودة للرئيسية
+                </a>
+            </div>
+        </section>
+
+        <p style="text-align: center; opacity: 0.5; font-size: 14px;">
+            "عالم كبير جداً، يومياً تلتقي بأشخاص جدد.. إذا وقعت فيه فصعب الخروج منه"
+        </p>
+    </div>
+
+    <div class="dev-badge">
+𝑷𝑶𝑾𝑬𝑹𝑫 𝑩𝒀 𝑨𝑩 <\>
+    </div>
+
+</body>
+</html>

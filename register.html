@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قدرك في نيفيريا | الاختبار الملكي ❄️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f2fe;
+            --accent: #4facfe;
+            --gold: #ffcc33;
+            --bg: #020617;
+            --card: rgba(15, 23, 42, 0.85);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: "Cairo", sans-serif;
+            background: var(--bg);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* خلفية جزيئات الثلج المتحركة */
+        canvas#bg-canvas {
+            position: fixed; top: 0; left: 0; z-index: -1;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            background: var(--card);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 242, 254, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
+        }
+
+        .progress-wrapper {
+            background: rgba(255,255,255,0.05);
+            height: 8px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        #bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            box-shadow: 0 0 15px var(--primary);
+            transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .question {
+            font-size: 22px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+            min-height: 60px;
+        }
+
+        .answers {
+            display: grid;
+            gap: 15px;
+        }
+
+        .answers button {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(125, 211, 255, 0.2);
+            color: #fff;
+            padding: 18px 25px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .answers button:hover {
+            background: rgba(0, 242, 254, 0.1);
+            border-color: var(--primary);
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+        }
+
+        /* شاشة النتيجة */
+        .result {
+            display: none;
+            text-align: center;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } }
+
+        .id-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.95));
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid var(--gold);
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .badge {
+            width: 120px; height: 120px;
+            margin: 0 auto 15px;
+            background: url('https://api.dicebear.com/7.x/identicon/svg?seed=Niveria') center/80%;
+            border: 4px double var(--gold);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 900;
+            color: var(--gold);
+            box-shadow: 0 0 20px rgba(255, 204, 51, 0.3);
+        }
+
+        .role-tag {
+            display: inline-block;
+            padding: 5px 20px;
+            background: var(--primary);
+            color: #000;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .desc { font-size: 14px; opacity: 0.8; line-height: 1.8; }
+
+        /* حقوق المطور - يمين أسفل صغيرة */
+        .dev-badge {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 10px;
+            color: #fff;
+            text-decoration: none;
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            font-family: 'Cinzel', serif;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<div class="container">
+    <h1>❄️ DESTINY TEST</h1>
+    <div class="progress-wrapper">
+        <div id="bar"></div>
+    </div>
+
+    <div id="quiz">
+        <div class="question" id="question">جاري التحميل...</div>
+        <div class="answers" id="answers"></div>
+    </div>
+
+    <div class="result" id="result">
+        <div class="role-tag" id="role-tag"></div>
+        <div class="id-card">
+            <div class="badge" id="rank-badge">RANK</div>
+            <h2 id="final-rank" style="color:var(--gold); margin-bottom: 10px;"></h2>
+            <p class="desc" id="final-desc"></p>
+        </div>
+        <button onclick="location.reload()" style="margin-top: 25px; background:none; border:1px solid #fff; color:#fff; padding:10px 20px; border-radius:50px; cursor:pointer; opacity:0.5;">إعادة الاختبار</button>
+    </div>
+</div>
+
+<a href="#" class="dev-badge">𝑷𝑶𝑾𝑬𝑹𝑫 𝑩𝒀 𝑨𝑩 </></a>
+
+<script>
+    // نظام جزيئات الثلج
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function initCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 0.5;
+            this.speedX = Math.random() * 1 - 0.5;
+            this.speedY = Math.random() * 1 + 0.5;
+        }
+        update() {
+            this.y += this.speedY;
+            if (this.y > canvas.height) this.y = -10;
+        }
+        draw() {
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < 100; i++) particles.push(new Particle());
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animate);
+    }
+    window.addEventListener('resize', initCanvas);
+    initCanvas(); animate();
+
+    // البرمجة المنطقية للاختبار
+    const questions = [
+        {q:"كيف تحب أن يراك أعضاء المملكة؟", a:[{t:"كمصدر إلهام وأخبار",r:"pub"}, {t:"كقوة حازمة ومنظمة",r:"adm"}]},
+        {q:"سقطت نقابة حليفة.. ماذا تفعل؟", a:[{t:"أعلن الحداد وأحمس البقية للثأر",r:"pub"}, {t:"أحلل الثغرات وأعيد هيكلة الدفاع",r:"adm"}]},
+        {q:"ما هو سلاحك الأقوى؟", a:[{t:"لساني وقلمي",r:"pub"}, {t:"عقلي وقوانيني",r:"adm"}]},
+        {q:"تفضل التواجد في..", a:[{t:"الساحات العامة والستوري",r:"pub"}, {t:"غرفة العمليات السرية",r:"adm"}]},
+        {q:"الناس يتبعونك لأنك..", a:[{t:"تمتلك الكاريزما",r:"pub"}, {t:"تمتلك الحلول",r:"adm"}]}
+    ];
+
+    const ranks = ["الإمبراطور", "نائب الإمبراطور", "اللورد", "الماركيز", "الدوق", "الجنرال", "اليونكو", "الهاشير"];
+    let i=0, score={pub:0, adm:0};
+
+    function loadQuestion() {
+        const bar = document.getElementById('bar');
+        bar.style.width = (i / questions.length) * 100 + "%";
+        
+        const q = questions[i];
+        document.getElementById('question').innerText = q.q;
+        const ansContainer = document.getElementById('answers');
+        ansContainer.innerHTML = '';
+
+        q.a.forEach(ans => {
+            const btn = document.createElement('button');
+            btn.innerText = ans.t;
+            btn.onclick = () => {
+                score[ans.r]++;
+                i++;
+                if(i < questions.length) loadQuestion(); else showResult();
+            };
+            ansContainer.appendChild(btn);
+        });
+    }
+
+    function showResult() {
+        document.getElementById('quiz').style.display = 'none';
+        document.getElementById('result').style.display = 'block';
+        document.getElementById('bar').style.width = "100%";
+
+        const isPub = score.pub > score.adm;
+        const role = isPub ? "📢 ناشر أسطوري" : "🛡️ إداري محنك";
+        const rank = ranks[Math.floor(Math.random() * ranks.length)];
+        
+        document.getElementById('role-tag').innerText = role;
+        document.getElementById('final-rank').innerText = rank;
+        document.getElementById('rank-badge').innerText = rank[0];
+        document.getElementById('final-desc').innerText = isPub ? 
+            "أنت صوت نيفيريا الصاخب، من يكتب التاريخ ويحرك مشاعر الآلاف بكلمة واحدة." : 
+            "أنت العقل المدبر خلف الكواليس، من يضع حجر الأساس لكل انتصار عظيم للمملكة.";
+    }
+
+    loadQuestion();
+</script>
+</body>
+</html>

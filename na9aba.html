@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>نقابة نيفيريا</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Cairo',sans-serif;
+    background:#020617;
+    color:#fff;
+    background-image: radial-gradient(circle at top, #1e293b 0%, #020617 100%);
+}
+.container{
+    max-width:700px;
+    margin:80px auto;
+    background:rgba(15,23,42,0.9);
+    padding:40px;
+    border-radius:25px;
+    border:1px solid #00f2fe;
+    box-shadow:0 0 30px rgba(0,242,254,0.2);
+}
+h1{
+    font-family:'Cinzel',serif;
+    color:#00f2fe;
+    margin-bottom:10px;
+}
+.badge{
+    display:inline-block;
+    margin:10px 0 25px;
+    padding:6px 15px;
+    border-radius:20px;
+    background:rgba(0,242,254,0.15);
+    border:1px solid #00f2fe;
+    font-size:13px;
+}
+.info{
+    margin-bottom:15px;
+    padding:15px;
+    background:rgba(255,255,255,0.03);
+    border-radius:15px;
+    border-right:4px solid #ffcc33;
+}
+.info b{
+    color:#ffcc33;
+}
+.back{
+    display:inline-block;
+    margin-top:30px;
+    padding:10px 25px;
+    border-radius:30px;
+    border:1px solid #00f2fe;
+    color:#00f2fe;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+.back:hover{
+    background:#00f2fe;
+    color:#000;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1 id="name"></h1>
+    <div class="badge" id="region"></div>
+
+    <div class="info">
+        <b>الوصف:</b>
+        <p id="desc"></p>
+    </div>
+
+    <div class="info">
+        <b>القائد:</b>
+        <p id="leader"></p>
+    </div>
+
+    <a href="index.html" class="back">⬅ الرجوع للمملكة</a>
+</div>
+
+<script>
+const na9abat = {
+    "برايم":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:"الجنرال غاتس",
+    },
+    "رايتون":{
+        desc:"نقابة البرق، مختصة بالهجوم السريع والحروب الخاطفة.",
+        leader:"الجنرال سونغ",
+    },
+    "اكاتسكي":{
+        desc:"نقابة الظلال والعمليات السرية.",
+        leader:"شاغر",
+    },
+    "شيبويا":{
+        desc:"نقابة الفوضى والسيطرة الحضرية.",
+        leader:"شاغر",
+    },
+    "سيلفا":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:"جنرال يور",
+    },
+    "ويسكي ":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:" جنرال ثورفين",
+    },
+    "دايف":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:"جنرال توجي ",
+    },
+    "سبارتا":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:"جنرال شاغر",
+    },
+    "فيلورا":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:" جنرال ليسا ",
+    },
+    "مانهاتن":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:"  جنرال اليسيا ",
+    },
+    "طوكيو":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:" جنرال موزان  ",
+    },
+    "هيروكو":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:"جنرال غوهان ",
+    },
+    "يوركشن":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:"  جنرال ويليام ",
+    },
+    "نوفا":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:"  جنرال رينتارو ",
+    },
+    "سيلفا":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:" جنرال سانيمي  ",
+    },
+    "الديا":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:" جنرال لوفي  ",
+    },
+    "كاريوكي":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:" جنرال رين  ",
+    },
+    "كاريون":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:" جنرال لويد  ",
+    },
+    "موسكو":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:" جنرال شاغر  ",
+    },
+    "اثينا":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:" جنرال غون  ",
+    },
+    "اسبادا":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:" جنرال شاغر  ",
+    },
+    "تسوكي":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:" جنرال جين  ",
+    },
+    "شينغامي":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:" جنرال هيناتا  ",
+    },
+    "يورك":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:" جنرال بطه  ",
+    },
+    "ايفرست":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:" جنرال ماكيما  ",
+    },
+    "ناريا":{
+        desc:"نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.",
+        leader:" جنرال تشيفويو  ",
+    },
+};
+
+const params = new URLSearchParams(window.location.search);
+const name = params.get("name");
+const region = params.get("region");
+
+document.getElementById("name").innerText = `نقابة ${name}`;
+document.getElementById("region").innerText = `إقليم: ${region}`;
+
+if(na9abat[name]){
+    document.getElementById("desc").innerText = na9abat[name].desc;
+    document.getElementById("leader").innerText = na9abat[name].leader;
+}else{
+    document.getElementById("desc").innerText = "لا توجد معلومات بعد.";
+    document.getElementById("leader").innerText = "غير معروف";
+}
+</script>
+
+</body>
+</html>
