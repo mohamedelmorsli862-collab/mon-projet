@@ -316,6 +316,43 @@
                 opacity: 0.3;
             }
         }
+        .king-box{
+    text-align:center;
+    margin-bottom:20px;
+}
+.king-box img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    border:3px solid #00f2fe;
+}
+
+.duke-box{
+    margin-bottom:20px;
+    padding:15px;
+    background:rgba(255,255,255,0.05);
+    border-radius:15px;
+}
+
+.duke-header{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:10px;
+}
+
+.duke-header img{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    border:2px solid #ffcc33;
+}
+
+.na9aba-item{
+    margin-right:20px;
+    margin-bottom:8px;
+}
+
     </style>
 </head>
 
@@ -369,14 +406,27 @@
         </div>
 
         <div class="scroll-wrapper">
-            <div class="region-card" onclick="showRegion('سايلنس', 'سوبارو', [
-                'الديا 🪽 | جنرال لوفي | دوق شوتو',
-                'كاريوكي 🎼 | جنرال رين | دوق هاشيراما',
-                'كاريون 🦁 | جنرال لويد',
-                'موسكو 🌨️ | جنرال شاغر',
-                'اثينا 🪼 | جنرال غون | دوق شوتو',
-                'اسبادا 🌪️ | جنرال شاغر'
-            ])">
+            <div class="region-card" onclick='showRegion(
+"سايلنس",
+"سوبارو",
+"./subaru.jfif",
+{
+  "شوتو": {
+    img: "./shoto.jfif",
+    na9abat: [
+      "الديا | جنرال لوفي",
+      "اثينا | جنرال غون"
+    ]
+  },
+  "هاشيراما": {
+    img: "./hachirama.jfif",
+    na9abat: [
+      "كاريوكي | جنرال رين"
+    ]
+  }
+}
+)'>
+
                 <img src="https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?q=80&w=1000">
                 <div class="region-overlay">
                     <h3>سايلنس 💎</h3>
@@ -384,13 +434,28 @@
                 </div>
             </div>
 
-            <div class="region-card" onclick="showRegion('سالوريا', 'ايتشيبي', [
-                'ناريا 🔥 | جنرال تشيفويو | دوق غيتو',
-                'ايفرست ⛰️ | جنرال ماكيما | دوق غيتو',
-                'يورك 🕷️ | جنرال بطه | دوق يوتا',
-                'شينغامي ☠️ | جنرال هيناتا | دوق يوتا',
-                'تسوكي ⚕️ | جنرال جين'
-            ])">
+            <div class="region-card" onclick='showRegion(
+  "سالوريا",
+  "ايتشيبي",
+  "https:images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=400",
+  {
+    "غيتو": {
+      img: "https:imgs.search.brave.com/6cHzchUeOABeS6X3qthzQdoE1fsUZzV2w9XqCLuXmtU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzY4LzBh/Lzg1LzY4MGE4NTE0/NTdiN2M1YmZlOGQ2/ZjA4ODhjNGM3NzE1/LmpwZw",
+      na9abat: [
+        "ناريا | جنرال تشيفويو",
+        "ايفرست | جنرال ماكيما"
+      ]
+    },
+    "يوتا": {
+      img: "https:imgs.search.brave.com/e-GG0R3VBRmGMFSj4g1btkvt2Xg3tWp7uNowYuJbVIE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2Y3LzJm/LzBlL2Y3MmYwZWI2/NDU0MzEzZTJlYmIx/OGU1MzI1NDJiN2U1/LmpwZw",
+      na9abat: [
+        "يورك | جنرال بطه",
+        "شينغامي | جنرال هيناتا"
+      ]
+    }
+  }
+)'>
+
                 <img src="https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=1000">
                 <div class="region-overlay">
                     <h3>سالوريا ⛈️</h3>
@@ -398,14 +463,35 @@
                 </div>
             </div>
 
-            <div class="region-card" onclick="showRegion('زيكولا', 'ميسا', [
-                'مانهاتن 💧 | جنرال اليسيا | دوق لانس',
-                'طوكيو 🌙 | جنرال موزان | دوق فورينا',
-                'هيروكو 🪶 | جنرال غوهان | دوق فورينا',
-                'يوركشن 🔱 | جنرال ويليام | دوق لانس',
-                'نوفا 🌗 | جنرال رينتارو | دوق بان',
-                'سيلفا 💫 | جنرال سانيمي | دوق بان'
-            ])">
+            <div class="region-card" onclick='showRegion(
+  "زيكولا",
+  "ميسا",
+  "https:imgs.search.brave.com/bzklFWzzWTpR_8MTkLYeMFiNuPlbRYC5BANHcU9t7fw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzZiLzBi/L2U0LzZiMGJlNDMz/ODI2ZjE2NmM5NGU5/OWUzYWY3MjFhNzBj/LmpwZw",
+  {
+    "لانس": {
+      img: "./lance.jfif",
+      na9abat: [
+        "مانهاتن | جنرال اليسيا",
+        "يوركشن | جنرال ويليام"
+      ]
+    },
+    "فورينا": {
+      img: "https:imgs.search.brave.com/2mWjf1NW-pcxULkKWgyUy6WY8pG5jMiobv3OcO9ByHo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzMyL2M0/LzhmLzMyYzQ4Zjdh/NjhjY2NjYTc0NGFh/NmZhOWMyMGJjMDc5/LmpwZw",
+      na9abat: [
+        "طوكيو | جنرال موزان",
+        "هيروكو | جنرال غوهان"
+      ]
+    },
+    "بان": {
+      img: "./ban.jfif",
+      na9abat: [
+        "نوفا | جنرال رينتارو",
+        "سيلفا | جنرال سانيمي"
+      ]
+    }
+  }
+)'>
+
                 <img src="https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?q=80&w=1000">
                 <div class="region-overlay">
                     <h3>زيكولا 🧚🏻‍♀️</h3>
@@ -413,13 +499,44 @@
                 </div>
             </div>
 
-            <div class="region-card" onclick="showRegion('غريغين', 'موساشي', [
-                'سيلفا يور ⚓ | جنرال يور',
-                'ويسكي 🍷 | جنرال ثورفين',
-                'دايف 🪼 | جنرال توجي',
-                'سبارتا 🏛️ | جنرال شاغر',
-                'فيلورا 🪭 | جنرال ليسا'
-            ])">
+            <div class="region-card" onclick='showRegion(
+  "غريغين",
+  "موساشي",
+  "./musachi.jfif",
+  {
+    "يور": {
+      img: "./yor.jfif",
+      na9abat: [
+        "سيلفا يور | جنرال يور"
+      ]
+    },
+    "ثورفين": {
+      img: "./thorfine.jfif",
+      na9abat: [
+        "ويسكي | جنرال ثورفين"
+      ]
+    },
+    "توجي": {
+      img: "./Toji.jfif",
+      na9abat: [
+        "دايف | جنرال توجي"
+      ]
+    },
+    "شاغر": {
+      img: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=200",
+      na9abat: [
+        "سبارتا | جنرال شاغر"
+      ]
+    },
+    "ليسا": {
+      img: "./lisajfif.jfif",
+      na9abat: [
+        "فيلورا | جنرال ليسا"
+      ]
+    }
+  }
+)'>
+
                 <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1000">
                 <div class="region-overlay">
                     <h3>غريغين 🐦‍🔥</h3>
@@ -427,12 +544,33 @@
                 </div>
             </div>
 
-            <div class="region-card" onclick="showRegion('نيموريا', 'ناروتو', [
-                'برايم ♦️ | جنرال غاتس',
-                'رايتون ⚡ | جنرال سونغ',
-                'اكاتسكي ⚜️ | جنرال شاغر',
-                'شيبويا 🐦‍🔥 | جنرال شاغر'
-            ])">
+            <div class="region-card" onclick='showRegion(
+  "نيموريا",
+  "ناروتو",
+  "./Naruto.jfif",
+  {
+    "غاتس": {
+      img: "./gats.jfif",
+      na9abat: [
+        "برايم | جنرال غاتس"
+      ]
+    },
+    "سونغ": {
+      img: "./Sung Jinwoo.jfif",
+      na9abat: [
+        "رايتون | جنرال سونغ"
+      ]
+    },
+    "شاغر": {
+      img: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=200",
+      na9abat: [
+        "اكاتسكي | جنرال شاغر",
+        "شيبويا | جنرال شاغر"
+      ]
+    }
+  }
+)'>
+
                 <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000">
                 <div class="region-overlay">
                     <h3>نيموريا 🍃</h3>
@@ -476,32 +614,54 @@
     </div>
 
     <script>
-        function showRegion(name, king, details) {
-            document.getElementById('modalTitle').innerText = "إقليم " + name;
-            document.getElementById('modalKing').innerText = "بإمرة الملك: " + king;
-            const listDiv = document.getElementById('modalList');
-            listDiv.innerHTML = "";
-            details.forEach(item => {
-                const parts = item.split('|');
-                const div = document.createElement('div');
-                div.className = "member-item";
-                // تنظيف الاسم: الإبقاء فقط على الأحرف العربية والمسافات (إزالة الإيموجي)
-                const cleanName = parts[0].replace(/[^\u0621-\u064A\s]/g, '').trim();
+        function showRegion(regionName, kingName, kingImg, dukes){
+    document.getElementById('modalTitle').innerText = "إقليم " + regionName;
+    document.getElementById('modalKing').innerText = "بإمرة الملك: " + kingName;
 
-                div.innerHTML = `
-<b>
-<a href="na9aba.html?name=${encodeURIComponent(cleanName)}&region=${encodeURIComponent(name)}">
-${cleanName}
-</a>
-</b>
-<br>
-<small>${parts[1] || ''} ${parts[2] || ''}</small>
-`;
+    const listDiv = document.getElementById('modalList');
+    listDiv.innerHTML = "";
 
-                listDiv.appendChild(div);
-            });
-            document.getElementById('regionModal').style.display = 'flex';
-        }
+    // الملك
+    listDiv.innerHTML += `
+        <div class="king-box">
+            <img src="${kingImg}">
+            <h3>👑 الملك ${kingName}</h3>
+        </div>
+    `;
+
+    // الدوقات
+    for(const duke in dukes){
+        const dukeData = dukes[duke];
+
+        const dukeDiv = document.createElement("div");
+        dukeDiv.className = "duke-box";
+
+        dukeDiv.innerHTML = `
+            <div class="duke-header">
+                <img src="${dukeData.img}">
+                <h4>🏰 الدوق ${duke}</h4>
+            </div>
+        `;
+
+        dukeData.na9abat.forEach(n=>{
+            const parts = n.split("|");
+            const cleanName = parts[0].trim();
+
+            dukeDiv.innerHTML += `
+                <div class="na9aba-item">
+                    ⚔️ <a href="na9aba.html?name=${encodeURIComponent(cleanName)}&region=${encodeURIComponent(regionName)}">
+                        ${n}
+                    </a>
+                </div>
+            `;
+        });
+
+        listDiv.appendChild(dukeDiv);
+    }
+
+    document.getElementById('regionModal').style.display = 'flex';
+}
+
         function closeModal() { document.getElementById('regionModal').style.display = 'none'; }
         window.onclick = function (e) { if (e.target == document.getElementById('regionModal')) closeModal(); }
     </script>
