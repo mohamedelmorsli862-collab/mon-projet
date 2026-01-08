@@ -266,49 +266,36 @@
             }
         }
 
-        .developer-badge {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            /* يمكنك تغييرها إلى right إذا أردت */
-            background: rgba(15, 23, 42, 0.6);
-            /* زجاجي داكن */
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 242, 254, 0.2);
-            padding: 8px 15px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 9999;
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            text-decoration: none;
-        }
+       .developer-badge {
+    position: fixed;       /* تبقى ثابتة فوق الشاشة */
+    bottom: 20px;          /* مسافة من الأسفل */
+    right: 20px;           /* مسافة من اليمين */
+    background: rgba(0, 242, 254, 0.2); /* خلفية شفافة */
+    border: 1px solid #00f2fe;          /* حد خارجي */
+    padding: 8px 15px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 8px;              /* المسافة بين النص والرمز */
+    font-family: 'Cairo', sans-serif;
+    font-weight: bold;
+    color: #00f2fe;
+    text-decoration: none;
+    z-index: 9999;         /* فوق كل العناصر */
+    transition: all 0.3s;
+}
 
-        .developer-badge:hover {
-            transform: translateY(-5px) scale(1.05);
-            border-color: #00f2fe;
-            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.2);
-            background: rgba(15, 23, 42, 0.9);
-        }
+.developer-badge:hover {
+    background: #00f2fe;
+    color: #000;
+    transform: scale(1.05); /* تأثير بسيط عند المرور */
+}
 
-        .developer-badge .text {
-            font-family: 'Cinzel', serif;
-            /* أو أي خط تفضله */
-            font-size: 11px;
-            color: #fff;
-            letter-spacing: 1.5px;
-            font-weight: bold;
-        }
+.developer-badge .code-icon {
+    font-weight: bold;
+    font-size: 1.1em;
+}
 
-        .developer-badge .code-icon {
-            color: #00f2fe;
-            font-weight: 900;
-            font-family: monospace;
-            font-size: 14px;
-            animation: blink 2s infinite;
-        }
 
         @keyframes blink {
 
