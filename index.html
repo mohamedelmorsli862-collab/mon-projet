@@ -362,6 +362,19 @@
 #modalList .member-item small {
     color: white;
 }
+/* كل الروابط داخل عناصر النقابة */
+.na9aba-item a {
+    color: yellow;       /* النص باللون الأصفر */
+    font-weight: bold;   /* باش يبان قوي */
+    text-decoration: none; /* بلا underline */
+}
+
+/* تأثير عند المرور بالماوس */
+.na9aba-item a:hover {
+    text-decoration: underline;
+}
+
+
     </style>
 </head>
 
@@ -448,8 +461,8 @@
   "ايتشيبي",
   "./itchibi.jfif",
   {
-    "غيتو": {
-      img: "./gito.jfif",
+    "يامي": {
+      img: "./yami.jfif",
       na9abat: [
         "ناريا | جنرال تشيفويو",
         "ايفرست | جنرال ماكيما"
@@ -654,12 +667,13 @@
 
         dukeData.na9abat.forEach(n=>{
             const parts = n.split("|");
-            const cleanName = parts[0].trim();
+            const cleanName = parts[0].trim(); // اسم النقابة فقط
+            const rest = parts.slice(1).join("|"); // البقية (الرتب)
 
             dukeDiv.innerHTML += `
                 <div class="na9aba-item">
                     ⚔️ <a href="na9aba.html?name=${encodeURIComponent(cleanName)}&region=${encodeURIComponent(regionName)}">
-                        ${n}
+                        <span class="na9aba-name">${cleanName}</span>${rest ? " |" + rest : ""}
                     </a>
                 </div>
             `;
@@ -671,25 +685,10 @@
     document.getElementById('regionModal').style.display = 'flex';
 }
 
+
         function closeModal() { document.getElementById('regionModal').style.display = 'none'; }
         window.onclick = function (e) { if (e.target == document.getElementById('regionModal')) closeModal(); }
-        details.forEach(item => {
-    const parts = item.split('|');
-    const div = document.createElement('div');
-    div.className = "member-item";
-
-    // الاسم ديال النقابة فقط
-    const na9abaName = parts[0].trim(); 
-    const otherInfo = parts.slice(1).join('|').trim();
-
-    div.innerHTML = `
-        <b style="color: yellow;">${na9abaName}</b>
-        <br>
-        <small style="color: white;">${otherInfo}</small>
-    `;
-    listDiv.appendChild(div);
-});
-
+        
     </script>
 </body>
 
