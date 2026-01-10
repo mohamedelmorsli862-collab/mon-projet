@@ -31,8 +31,6 @@
             overflow-x: hidden;
             background-image: radial-gradient(circle at top, #1e293b 0%, #020617 100%);
         }
-
-        /* Navigation */
         .nav-container {
             position: sticky;
             top: 0;
@@ -68,8 +66,6 @@
             color: #000;
             box-shadow: 0 0 15px var(--primary);
         }
-
-        /* Hero */
         .hero {
             height: 60vh;
             display: flex;
@@ -86,8 +82,6 @@
             font-size: clamp(2.5rem, 8vw, 4.5rem);
             text-shadow: 0 0 30px var(--primary);
         }
-
-        /* Ranks */
         .rank-section {
             padding: 60px 5%;
             text-align: center;
@@ -129,8 +123,6 @@
         .rank-founder .rank-name {
             color: var(--gold);
         }
-
-        /* Regions Scroll */
         .regions-container {
             padding: 40px 0;
             background: rgba(255, 255, 255, 0.02);
@@ -174,8 +166,6 @@
             padding: 20px;
             background: linear-gradient(to top, #000, transparent);
         }
-
-        /* Modal / Popup */
         .modal {
             position: fixed;
             inset: 0;
@@ -226,8 +216,6 @@
             display: block;
             margin-top: 4px;
         }
-
-        /* Footer */
         .rising-footer {
             margin-top: 50px;
             background: #0b1228;
@@ -259,15 +247,11 @@
                 padding: 10px;
             }
         }
-
-        /* تصميم بطاقة الحقوق العائمة */
         .developer-badge {
             position: fixed;
             bottom: 20px;
             left: 20px;
-            /* يمكنك تغييرها إلى right إذا أردت */
             background: rgba(15, 23, 42, 0.6);
-            /* زجاجي داكن */
             backdrop-filter: blur(10px);
             border: 1px solid rgba(0, 242, 254, 0.2);
             padding: 8px 15px;
@@ -354,22 +338,17 @@
 }
 #modalList .member-item a {
     color: yellow;
-    text-decoration: none; /* باش ما يبانش underline إلا بغيت */
-    font-weight: bold; /* بارز شوية */
+    text-decoration: none; 
+    font-weight: bold; 
 }
-
-/* باقي التفاصيل ممكن تبقى باللون الأبيض أو أي لون آخر */
 #modalList .member-item small {
     color: white;
 }
-/* كل الروابط داخل عناصر النقابة */
 .na9aba-item a {
-    color: yellow;       /* النص باللون الأصفر */
-    font-weight: bold;   /* باش يبان قوي */
-    text-decoration: none; /* بلا underline */
+    color: yellow;       
+    font-weight: bold;  
+    text-decoration: none; 
 }
-
-/* تأثير عند المرور بالماوس */
 .na9aba-item a:hover {
     text-decoration: underline;
 }
@@ -405,7 +384,7 @@
             </div>
             <div class="rank-card">
                 <img src="https://files.catbox.moe/6ze0tp.jpg" class="rank-img">
-                <div style="font-size: 12px; opacity: 0.6;">نائبة المؤوسس</div>
+                <div style="font-size: 12px; opacity: 0.6;"> نائبة المؤسس</div>
                 <div class="rank-name" style="font-size: 1.5rem; font-weight: 900;">هيستوريا</div>
             </div>
             <div class="rank-card">
@@ -488,7 +467,7 @@
             <div class="region-card" onclick='showRegion(
   "زيكولا",
   "ميسا",
-  "https:imgs.search.brave.com/bzklFWzzWTpR_8MTkLYeMFiNuPlbRYC5BANHcU9t7fw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzZiLzBi/L2U0LzZiMGJlNDMz/ODI2ZjE2NmM5NGU5/OWUzYWY3MjFhNzBj/LmpwZw",
+  "./misa.jfif",
   {
     "لانس": {
       img: "./lance.jfif",
@@ -498,7 +477,7 @@
       ]
     },
     "فورينا": {
-      img: "https:imgs.search.brave.com/2mWjf1NW-pcxULkKWgyUy6WY8pG5jMiobv3OcO9ByHo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzMyL2M0/LzhmLzMyYzQ4Zjdh/NjhjY2NjYTc0NGFh/NmZhOWMyMGJjMDc5/LmpwZw",
+      img: "./forina.jfif",
       na9abat: [
         "طوكيو | جنرال موزان",
         "هيروكو | جنرال غوهان"
@@ -651,7 +630,7 @@
         </div>
     `;
 
-    // الدوقات
+
     for(const duke in dukes){
         const dukeData = dukes[duke];
 
@@ -667,8 +646,8 @@
 
         dukeData.na9abat.forEach(n=>{
             const parts = n.split("|");
-            const cleanName = parts[0].trim(); // اسم النقابة فقط
-            const rest = parts.slice(1).join("|"); // البقية (الرتب)
+            const cleanName = parts[0].trim(); 
+            const rest = parts.slice(1).join("|");
 
             dukeDiv.innerHTML += `
                 <div class="na9aba-item">
