@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محراب الخالدين | Niveria Legends 🏛️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Cinzel:wght@700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --gold: #ffcc33;
+            --mythic: #ff1100;
+            --primary: #00f2fe;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #020408;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* خلفية سينمائية متحركة */
+        .universe-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, #0d1117 0%, #020408 100%);
+            z-index: -1;
+        }
+
+        header {
+            padding: 80px 20px 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            background: linear-gradient(to bottom, #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 4px;
+        }
+
+        /* شبكة البطاقات العالمية */
+        .legends-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px 6%;
+        }
+
+        .legend-card {
+            position: relative;
+            height: 450px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--glass);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+        }
+
+        /* الصورة الخلفية الشفافة */
+        .card-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: scale(1.1) blur(2px) brightness(0.4);
+            transition: 0.6s;
+            z-index: 0;
+        }
+
+        .legend-card:hover .card-bg-img {
+            filter: scale(1) blur(0px) brightness(0.6);
+        }
+
+        /* طبقة التدرج اللوني فوق الصورة */
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 20%, rgba(0, 0, 0, 0.9) 90%);
+            z-index: 1;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            text-align: right;
+        }
+
+        .mythic-glow {
+            border-color: var(--mythic);
+            box-shadow: 0 0 20px rgba(255, 17, 0, 0.2);
+        }
+
+        .name {
+            font-size: 2rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .role {
+            font-size: 12px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            font-size: 10px;
+            padding: 4px 12px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .achievements-list {
+            font-size: 12px;
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.4s 0.1s;
+        }
+
+        .legend-card:hover .achievements-list {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* زر الإعجاب الفخم */
+        .like-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: fit-content;
+            transition: 0.3s;
+        }
+
+        .like-btn:hover {
+            background: #ff4d4d;
+        }
+
+        .like-btn.active {
+            background: #ff4d4d;
+        }
+
+        .corner-rank {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 3;
+            font-family: 'Cinzel';
+            font-size: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 15px;
+            border-radius: 50px;
+            border: 1px solid var(--gold);
+        }
+
+        /* تصميم بطاقة الحقوق العائمة */
+        .developer-badge {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            /* يمكنك تغييرها إلى right إذا أردت */
+            background: rgba(15, 23, 42, 0.6);
+            /* زجاجي داكن */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            padding: 8px 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 9999;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .developer-badge:hover {
+            transform: translateY(-5px) scale(1.05);
+            border-color: #00f2fe;
+            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.2);
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .developer-badge .text {
+            font-family: 'Cinzel', serif;
+            /* أو أي خط تفضله */
+            font-size: 11px;
+            color: #fff;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+        }
+
+        .developer-badge .code-icon {
+            color: #00f2fe;
+            font-weight: 900;
+            font-family: monospace;
+            font-size: 14px;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .back {
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 30px;
+            border: 1px solid #00f2fe;
+            color: #00f2fe;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            background: rgba(0, 242, 254, 0.05);
+            backdrop-filter: blur(5px);
+        }
+
+        .back:hover {
+            background: #00f2fe;
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+        }
+        .achievements-list {
+    font-size: 12px;
+    color: #ddd;
+    line-height: 1.7;
+    margin-bottom: 15px;
+
+    max-height: 120px;       /* الطول المحدد */
+    overflow-y: auto;        /* سكرول عمودي */
+    padding-right: 6px;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.4s ease;
+}
+
+/* إظهار عند hover */
+.legend-card:hover .achievements-list {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* سكرول فخم */
+.achievements-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.achievements-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 215, 0, 0.6);
+    border-radius: 10px;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <div class="universe-bg"></div>
+
+    <header>
+        <h1>HALL OF FAME</h1>
+        <p style="opacity: 0.6; font-size: 14px; margin-top: 10px;">أساطير نيفيريا: بصمة خالدة في قلب التاريخ</p>
+    </header>
+
+    <main class="legends-grid">
+
+       
+
+        <article class="legend-card">
+            <div class="card-bg-img"
+                style="background-image: url('https://files.catbox.moe/tw9p17.jpg'); background-color: #1a1a1a;"></div>
+            <div class="card-overlay"></div>
+            <div class="corner-rank">LEGEND</div>
+
+            <div class="card-content">
+                <span class="role">نائب مؤوسس</span>
+                <h2 class="name">غاتس</h2>
+
+                <div class="tags">
+                    <span class="tag">قائد مغوار</span>
+                    <span class="tag">برونزي</span>
+                </div>
+
+                <div class="achievements-list">
+                    • تأمين حدود الأقاليم الخمسة.<br>
+                    • فاتح القلاع الشمالية العظمى.<br>
+                    • درع العرش الوفي.
+                </div>
+
+                <button class="like-btn" onclick="toggleLike(this, 'guts')">
+                    ❤️ <span class="count">0</span>
+                </button>
+            </div>
+        </article>
+
+        
+
+        <article class="legend-card">
+            <div class="card-bg-img"
+                style="background-image: url('./artar.jfif'); background-color: #1a1a1a;"></div>
+            <div class="card-overlay"></div>
+            <div class="corner-rank">LEGEND</div>
+
+            <div class="card-content">
+                <span class="role"> شوغن  </span>
+                <h2 class="name">أرثر</h2>
+
+                <div class="tags">
+                    <span class="tag">متهور</span>
+                    <span class="tag">مخطط </span>
+                </div>
+
+                <div class="achievements-list">
+                    بدأت مسيرة أرثر داخل ريفينيا كنائب دوق، ومع قوة إدارته المثالية وحنكته الفائقة تمكن خلال فترة قصيرة ان يصبح افضل رتبة دوقية في تلك الفترة، ليصبح رمزاً للذكاء والادارة المتكاملة داخل عالم الممالك، أرثر لم يكتفِ بذلك فـ اخد راحه محارب، لكي يعود ولكن يعود لـ نيفيريا وأصبح نائب لورد، وأثبت استحقاقه لتلك رتبة لكي يصبح افضل رتبة عليا إدارية هناك من خلال مهارته وإدارته الذكية، لاحقاً، استطاع أرثر أن يرتقي إلى منصب شوغن نيفيريا الأول والأخير في تاريخها، ليصبح رمزاً للقوة والذكاء والتنظيم الإداري، مقدماً نموذجاً فريداً لأفضل قيادة إدارية عرفتها الممالك تحت حكمه، وهو احد اسباب جعل نيفيريا لتصبح ثاني اقوى مملكة في عصرها، رغم حداثتها الزمنية، مما يجعل أرثر بلا منازع أفضل شوغن او رتبة إدارية بتاريخ نيفيريا والممالك على حد سواء
+                </div>
+
+                <button class="like-btn" onclick="toggleLike(this, 'arthur')">
+                    ❤️ <span class="count">0</span>
+                </button>
+            </div>
+        </article>
+        <article class="legend-card">
+            <div class="card-bg-img"
+                style="background-image: url('./foshi.jfif'); background-color: #1a1a1a;"></div>
+            <div class="card-overlay"></div>
+            <div class="corner-rank">ORIGIN</div>
+
+            <div class="card-content">
+                <span class="role">ادمرال </span>
+                <h2 class="name">فوشي</h2>
+
+                <div class="tags">
+                    <span class="tag">اسطوري </span>
+                    <span class="tag">ذكي</span>
+                </div>
+
+                <div class="achievements-list">
+                    ليس اسمًا مرّ في سجلات نفيريا، بل مرحلة كاملة. أحد أقوى الأدميرالات في نقابة طوكيو في زمنه، فترة لم تُكسر فيها هيبة نقابته، ولم يستطع أحد تجاوزها لا آنذاك ولا بعدها. ثم لم يكتفِ بالقوة العسكرية، فترقى ليصبح دوقًا على أكثر من نقابة، وأعادها من الصدأ إلى القمة في وقت قصير بشكل يثير الشك… والغيرة.
+يُعد فوشي أقوى إداري عرفته مملكة نفيريا، وقبلها ريفينيا. وعندما زُرعت الفوضى وخُرّبت المملكة، ووقف المشرفون حائرين بين الإمبراطور والمؤسس، كان هو من قادهم للطريق الصحيح. قراره لم يكن مجرد موقف، بل كان لحظة الانقسام التي وُلدت منها نفيريا، بعدما كانت ريفينيا.عُرف بذكائه، عدله، وأسلوب إقناع استثنائي جعله من أفضل نواب اللورد في تاريخ المملكة.
+                </div>
+
+                <button class="like-btn" onclick="toggleLike(this, 'guts')">
+                    ❤️ <span class="count">0</span>
+                </button>
+            </div>
+        </article>
+
+        <div style="text-align: center; width: 100%; margin-top: 40px;">
+            <a href="index.html" class="back">⬅ الرجوع للمملكة</a>
+        </div>
+
+        <a href="#" class="developer-badge">
+            <span class="text"> 𝑲𝒂𝒊𝒓𝒐 – 𝑻𝒐𝒋𝒊 ⛧</span>
+            <span class="code-icon">&lt;/&gt;</span>
+        </a>
+
+    </main>
+
+    <script>
+        function toggleLike(btn, id) {
+            let likes = JSON.parse(localStorage.getItem('legend_likes') || '{}');
+            if (!likes[id]) {
+                likes[id] = 1;
+                btn.classList.add('active');
+            } else {
+                likes[id]++;
+            }
+            localStorage.setItem('legend_likes', JSON.stringify(likes));
+            btn.querySelector('.count').innerText = likes[id];
+            btn.style.transform = "scale(0.9)";
+            setTimeout(() => btn.style.transform = "scale(1)", 100);
+        }
+
+        window.onload = () => {
+            let likes = JSON.parse(localStorage.getItem('legend_likes') || '{}');
+            document.querySelectorAll('.like-btn').forEach(btn => {
+                const id = btn.getAttribute('onclick').match(/'([^']+)'/)[1];
+                if (likes[id]) btn.querySelector('.count').innerText = likes[id];
+            });
+        }
+    </script>
+</body>
+
+</html>

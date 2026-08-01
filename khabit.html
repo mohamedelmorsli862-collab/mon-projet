@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>الخبيث الأعظم | نيفيريا</title>
+  <link rel="stylesheet" href="khabit.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: black;
+  color: #ddd;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* الخلفية */
+.dark-bg {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #1a0000, #000);
+  z-index: -2;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: -1;
+}
+
+/* الإطار العام */
+.court {
+  max-width: 900px;
+  margin: auto;
+  padding: 80px 20px;
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.title {
+  text-align: center;
+  font-size: 48px;
+  color: #b30000;
+  text-shadow: 0 0 20px rgba(179,0,0,.6);
+}
+
+.subtitle {
+  text-align: center;
+  margin-top: 10px;
+  color: #999;
+  letter-spacing: 2px;
+}
+
+.divider {
+  width: 120px;
+  height: 3px;
+  background: #b30000;
+  margin: 30px auto;
+}
+
+/* النص */
+.story p {
+  margin-bottom: 20px;
+  line-height: 1.9;
+  font-size: 17px;
+}
+
+.name {
+  color: #ff4d4d;
+  font-weight: bold;
+}
+
+.highlight {
+  color: #ff8080;
+  font-style: italic;
+  border-right: 4px solid #b30000;
+  padding-right: 15px;
+}
+
+.final {
+  color: #fff;
+  font-weight: bold;
+}
+
+.quote {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 18px;
+  color: #aaa;
+  font-style: italic;
+  opacity: 0.8;
+}
+.fire-title {
+  position: relative;
+  color: #ff3b3b;
+  text-shadow:
+    0 0 5px #ff1a1a,
+    0 0 15px #ff4500,
+    0 0 30px rgba(255,69,0,0.8);
+  animation: fireFlicker 1.5s infinite alternate;
+}
+
+@keyframes fireFlicker {
+  0% {
+    text-shadow:
+      0 0 5px #ff1a1a,
+      0 0 15px #ff4500,
+      0 0 25px rgba(255,69,0,0.6);
+  }
+  100% {
+    text-shadow:
+      0 0 10px #ff0000,
+      0 0 25px #ff6600,
+      0 0 45px rgba(255,100,0,1);
+  }
+}
+.smoke {
+  position: fixed;
+  inset: 0;
+  background:
+    url("https://i.imgur.com/8KZ5FzH.png") repeat;
+  opacity: 0.08;
+  animation: smokeMove 60s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes smokeMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 1000px -500px;
+  }
+}
+.court {
+  max-width: 900px;
+  margin: auto;
+  padding: 80px 20px;
+  opacity: 0;
+  transform: scale(0.95) translateY(40px);
+  animation: cinematicEntry 1.8s ease forwards;
+}
+
+@keyframes cinematicEntry {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(60px);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  box-shadow: inset 0 0 120px rgba(0,0,0,0.9);
+  pointer-events: none;
+}
+.cursed-name {
+  animation: cursePulse 4s infinite;
+}
+
+@keyframes cursePulse {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+    text-shadow: 0 0 15px crimson;
+  }
+  40% {
+    opacity: 0.2;
+    filter: blur(3px);
+    text-shadow: 0 0 40px black;
+  }
+  60% {
+    opacity: 0.4;
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    text-shadow: 0 0 20px red;
+  }
+}
+.chains {
+  position: fixed;
+  inset: 0;
+  background-image: url("https://i.imgur.com/4M7IWwP.png");
+  background-repeat: repeat;
+  opacity: 0.07;
+  animation: chainMove 80s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes chainMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -1200px 800px;
+  }
+}
+body {
+  background: radial-gradient(circle at top, #1a1a1a, #000);
+}
+
+
+    </style>
+    <div class="chains"></div>
+
+    <div class="smoke"></div>
+
+  <div class="dark-bg"></div>
+  <div class="overlay"></div>
+
+  <section class="court">
+    <h1  class="title fire-title cursed-name">☠️ الخبيث الأعظم ☠️</h1>
+    <h2 class="subtitle">ماركيز نيفيريا الأول</h2>
+
+    <div class="divider"></div>
+
+    <article class="story">
+      <p>
+        الخبيث الأعظم… اسم لم يُطلق عبثًا، بل خُتم على تاريخ 
+        <span class="name">غوكو</span>  
+        بعد أن خان مشرفي نيفيريا ومؤسسها، وزرف ست نقابات كاملة
+        بعدما مُنح الثقة، المقام، والحماية.
+      </p>
+
+      <p>
+        بدأت قصته حين طلب دمج مملكته المسماة <strong>رينغان</strong>، 
+        مدّعيًا امتلاكه 11 نقابة و90 مشرفًا، 
+        لكن الحقيقة ظهرت سريعًا… لم يحضر سوى بعدد يُعد على الأصابع.
+      </p>
+
+      <p>
+        أُلغي الدمج في نفس الدائرة الزمنية، 
+        ورغم ذلك، ومن كرم <strong>غيو</strong>، 
+        تُرك له مقامه ولم يُعفَ، رغم أنه لم يكن يستحقه.
+        وكان ذلك أول خطأ… لأن الطيبة في عالم الممالك
+        سلاح ذو حدّين.
+      </p>
+
+      <p>
+        صبر غيو، وتحمل، لكن غوكو لم يعمل سوى أيام،
+        وكل يومين مشكلة، وكل مشكلة ذريعة،
+        حتى وصل لمرحلة لعب دور المظلوم،
+        وبكى بين المشرفين مدعيًا الظلم.
+      </p>
+
+      <p>
+        وفي النهاية… غدر.
+        دخل النقابات، زرف، وخان،
+        بعدما شرفته نيفيريا ورفعت اسمه
+        من وضعه الدوني.
+      </p>
+
+      <p class="highlight">
+        حاولت نيفيريا أن تصنع منه إنسانًا نظيفًا،
+        وتُخرجه من مستنقع الوحل الذي عاش فيه،
+        لكن المعدن لا يتغير.
+      </p>
+
+      <p>
+        هذه ليست إشاعة، ولا كذبة،
+        فلو أراد غيو تشويهك لفعل،
+        لكنه اختار الصمت…
+        لأن الفرق بينكما واضح:
+        <br>
+        <strong>أنت بارع في الأكاذيب والغدر، وهو بارع في البناء.</strong>
+      </p>
+
+      <p class="final">
+        هذه الكلمات ليست انتقامًا،
+        بل <span>حقيقة</span>،
+        وعبرة لكل من يفكر أن يسلك طريق الخيانة.
+      </p>
+    </article>
+
+    <div class="quote">
+      « من خان مرة… سيُذكر بالخيانة إلى الأبد »
+    </div>
+
+  </section>
+<audio id="gavelSound" src="https://assets.mixkit.co/sfx/preview/mixkit-judge-gavel-hit-1104.mp3"></audio>
+<script>
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    const sound = document.getElementById("gavelSound");
+    sound.volume = 0.6;
+    sound.play().catch(()=>{});
+  }, 1200);
+});
+</script>
+
+</body>
+</html>

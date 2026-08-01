@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ديوان الإدارة | مملكة نيفيريا 🛡️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f2fe;
+            --gold: #ffcc33;
+            --bg: #020617;
+            --card-bg: rgba(15, 23, 42, 0.9);
+            --input-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg);
+            color: #fff;
+            background-image: radial-gradient(circle at center, #1e293b 0%, #020617 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .admin-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header { text-align: center; margin-bottom: 40px; }
+        header h1 { font-size: 2.5rem; color: var(--primary); text-shadow: 0 0 15px rgba(0, 242, 254, 0.5); }
+        header p { opacity: 0.6; }
+
+        .admin-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .admin-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            border-right: 4px solid var(--gold);
+            padding-right: 15px;
+            color: var(--gold);
+        }
+
+        /* تنسيق المدخلات */
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 10px; font-weight: bold; font-size: 14px; }
+        
+        input[type="text"], input[type="password"], textarea, input[type="file"] {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--input-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #fff;
+            font-family: 'Cairo';
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+        }
+
+        textarea { height: 120px; resize: none; }
+
+        .btn-publish {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            border: none;
+            border-radius: 10px;
+            color: #000;
+            font-weight: 900;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-publish:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 242, 254, 0.4);
+        }
+
+        .preview-img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: none;
+            border: 1px solid var(--primary);
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-container">
+        <a href="index.html" class="back-btn">⬅ العودة للمملكة</a>
+        
+        <header>
+            <h1>ديوان الإدارة المركزية</h1>
+            <p>تحكم في سجلات وأخبار مملكة نيفيريا</p>
+        </header>
+
+        <section class="admin-card">
+            <h2>📜 نشر مرسوم ملكي جديد</h2>
+            <div class="form-group">
+                <label>صورة الحدث</label>
+                <input type="file" id="img" accept="image/*" onchange="previewImage(event)">
+                <img id="imagePreview" class="preview-img">
+            </div>
+            <div class="form-group">
+                <label>وصف الحدث (محتوى الخبر)</label>
+                <textarea id="text" placeholder="اكتب تفاصيل الحدث الأسطوري هنا..."></textarea>
+            </div>
+            <button class="btn-publish" onclick="publish()">بث الخبر في أرجاء المملكة</button>
+        </section>
+
+        <section class="admin-card">
+            <h2>👥 تعيين مسؤول جديد</h2>
+            <div class="form-group">
+                <input type="text" id="adminEmail" placeholder="البريد الإلكتروني للمسؤول">
+            </div>
+            <div class="form-group">
+                <input type="password" id="adminPass" placeholder="كلمة المرور السرية">
+            </div>
+            <button class="btn-publish" style="background: var(--gold);" onclick="addAdmin()">منح الصلاحيات</button>
+        </section>
+    </div>
+
+    <script src="js/admin.js"></script>
+    <script>
+        // دالة لمعاينة الصورة قبل النشر
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function(){
+                const output = document.getElementById('imagePreview');
+                output.src = reader.result;
+                output.style.display = 'block';
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>

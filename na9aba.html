@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>نقابة نيفيريا</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Cinzel:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Cairo', sans-serif;
+            background: #020617;
+            color: #fff;
+            background-image: radial-gradient(circle at top, #1e293b 0%, #020617 100%);
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 80px auto;
+            background: rgba(15, 23, 42, 0.9);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid #00f2fe;
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.2);
+            text-align: center;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            display: block;
+            border: 3px solid #00f2fe;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: #00f2fe;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            margin: 10px 0 25px;
+            padding: 6px 18px;
+            border-radius: 20px;
+            background: rgba(0, 242, 254, 0.15);
+            border: 1px solid #00f2fe;
+            font-size: 13px;
+        }
+
+        .info {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border-right: 4px solid #00f2fe;
+            text-align: right;
+            color: #ffcc33;
+        }
+
+        .info b {
+            color: #00f2fe;
+        }
+
+        /* .user-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            display: block;
+            border: 3px solid #00f2fe;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+        } */
+
+        .back {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 30px;
+            border-radius: 30px;
+            border: 1px solid #00f2fe;
+            color: #00f2fe;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .back:hover {
+            background: #00f2fe;
+            color: #000;
+        }
+
+        .ranks-btn {
+            margin-top: 20px;
+            padding: 12px 25px;
+            border-radius: 25px;
+            border: 1px solid #ffcc33;
+            background: transparent;
+            color: #ffcc33;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .ranks-btn:hover {
+            background: #ffcc33;
+            color: #000;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .modal-content {
+            background: #020617;
+            padding: 25px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid #00f2fe;
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.3);
+            text-align: right;
+        }
+
+        .modal-content h2 {
+            color: #00f2fe;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .ranks-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .ranks-list li {
+            padding: 10px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .close-btn{
+    width:100%;
+    margin-top:15px;
+    padding:10px;
+    border:none;
+    border-radius:20px;
+    background:#00f2fe;
+    color:#000;
+    font-weight:bold;
+    cursor:pointer;
+    position:sticky;
+    bottom:0;
+}
+
+        .rank-item{
+    margin-bottom:15px;
+    padding:12px;
+    background:rgba(255,255,255,0.05);
+    border-radius:12px;
+    border-right:3px solid #ffcc33;
+    text-align:right;
+    font-size:14px;
+}
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .best-btn {
+            padding: 10px 25px;
+            border-radius: 30px;
+            border: 1px solid #ffcc33;
+            background: transparent;
+            color: #ffcc33;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .best-btn:hover {
+            background: #ffcc33;
+            color: #000;
+        }
+
+        /* ===== مودال ===== */
+        .modal{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.modal-content{
+    background:#020617;
+    width:90%;
+    max-width:500px;
+    max-height:85vh; /* ← هذا هو السر */
+    padding:20px;
+    border-radius:20px;
+    border:1px solid #00f2fe;
+    overflow-y:auto; /* ← scroll */
+    text-align:right;
+}
+
+
+        .modal-content h2 {
+            color: #ffcc33;
+            margin-bottom: 20px;
+        }
+
+        .best-card {
+            margin-bottom: 20px;
+        }
+
+        .best-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ffcc33;
+        }
+
+        .close-btn {
+            margin-top: 20px;
+            padding: 8px 25px;
+            border-radius: 20px;
+            border: none;
+            background: #ffcc33;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+       
+
+        /* تحسين للهاتف */
+        @media (max-width:600px) {
+            .developer-badge  {
+                font-size: 13px;
+            }
+        }
+
+       .developer-badge {
+    position: fixed;       /* تبقى ثابتة فوق الشاشة */
+    bottom: 20px;          /* مسافة من الأسفل */
+    right: 20px;           /* مسافة من اليمين */
+    background: rgba(0, 242, 254, 0.2); /* خلفية شفافة */
+    border: 1px solid #00f2fe;          /* حد خارجي */
+    padding: 8px 15px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 8px;              /* المسافة بين النص والرمز */
+    font-family: 'Cairo', sans-serif;
+    font-weight: bold;
+    color: #00f2fe;
+    text-decoration: none;
+    z-index: 9999;         /* فوق كل العناصر */
+    transition: all 0.3s;
+}
+
+.developer-badge:hover {
+    background: #00f2fe;
+    color: #000;
+    transform: scale(1.05); /* تأثير بسيط عند المرور */
+}
+
+.developer-badge .code-icon {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- <img src="my_picture.jfif" class="user-pic" alt="My Picture"> -->
+        <img id="logo" class="logo">
+        <h1 id="name"></h1>
+        <div class="badge" id="region"></div>
+
+        <div class="info">
+            <b>الوصف:</b>
+            <p id="desc"></p>
+        </div>
+
+        <div class="info">
+            <b>القائد:</b>
+            <p id="leader"></p>
+        </div>
+        
+
+
+        <a href="index.html" class="back">⬅ الرجوع للمملكة</a>
+
+    </div>
+
+    <script>
+        // بيانات النقابات
+        const na9abat = {
+            "برايم": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "الجنرال غاتس", img: "./gats.jfif" },
+            "رايتون": { desc: "نقابة البرق، مختصة بالهجوم السريع والحروب الخاطفة.", leader: "الجنرال سونغ", img: "./Sung Jinwoo.jfif" },
+            "اكاتسكي": { desc: "نقابة الظلال والعمليات السرية.", leader: "شاغر", img: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" },
+            "شيبويا": { desc: "نقابة الفوضى والسيطرة الحضرية.", leader: "شاغر", img: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" },
+            "سيلفا": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال سانيمي", img: "./sanimi.jfif" },
+            "سيلفا يور": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال يور", img: "./yor.jfif" },
+            "ويسكي": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال ثورفين", img: "./thorfine.jfif" },
+            "دايف": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال توجي", img: "./Toji.jfif" },
+            "سبارتا": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال شاغر", img: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" },
+            "فيلورا": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال ليسا", img: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" },
+            "مانهاتن": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال اليسيا", img: "./elysia.jfif" },
+            "طوكيو": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال موزان", img: "./muzan.jfif" },
+            "هيروكو": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال غوهان", img: "./gohan.jfif" },
+            "يوركشن": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال ويليام", img: "./William - #icon  ࣪⋆ ࣪_.jfif" },
+            "نوفا": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال رينتارو", img: "./Rintarou Tsumugi.jfif" },
+            "الديا": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال لوفي", img: "./luffy ☠️.jfif" },
+            "كاريوكي": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال رين", img: "./rin.jfif" },
+            "كاريون": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال لويد", img: "./loid.jfif" },
+            "موسكو": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال شاغر", img: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" },
+            "اثينا": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال غون", img: "./gon icon.jfif" },
+            "اسبادا": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال شاغر", img: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400" },
+            "تسوكي": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال جين", img: "./jin.jfif" },
+            "شينغامي": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال هيناتا", img: "./hinata.jfif" },
+            "يورك": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال بطه", img: "./bata.jfif" },
+            "ايفرست": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال ماكيما", img: "./Makima.jfif" },
+            "ناريا": { desc: "نقابة النخبة الأولى، تشرف على أخطر المهام داخل المملكة.", leader: "جنرال تشيفويو", img: "./chifuyu.jfif" }
+
+};
+
+
+        // قراءة الاسم والإقليم من الرابط
+        const params = new URLSearchParams(window.location.search);
+        let name = params.get("name");
+        let region = params.get("region");
+
+        // تنظيف الاسم (حذف مسافات أو رموز غير عربية)
+        const cleanName = name?.trim();
+
+        // عرض المعلومات
+        document.getElementById("name").innerText = cleanName ? `نقابة ${cleanName}` : "نقابة غير معروفة";
+        document.getElementById("region").innerText = `إقليم: ${region || "غير محدد"}`;
+
+        if (cleanName && na9abat[cleanName]) {
+            document.getElementById("desc").innerText = na9abat[cleanName].desc;
+            document.getElementById("leader").innerText = na9abat[cleanName].leader;
+            document.getElementById("logo").src = na9abat[cleanName].img;
+            document.getElementById("logo").style.display = "block";
+        } else {
+            document.getElementById("desc").innerText = "لا توجد معلومات بعد.";
+            document.getElementById("leader").innerText = "غير معروف";
+            document.getElementById("logo").style.display = "none";
+        }
+        
+
+        window.onclick = function (e) {
+            const modal = document.getElementById("ranksModal");
+            if (e.target === modal) closeRanks();
+        };
+      
+
+
+
+
+
+    </script>
+  
+
+
+    <a href="#" class="developer-badge">
+        <span class="text"> 𝑲𝒂𝒊𝒓𝒐 – 𝑻𝒐𝒋𝒊 ⛧</span>
+        <span class="code-icon">&lt;/&gt;</span>
+    </a>
+
+</body>
+
+</html>
